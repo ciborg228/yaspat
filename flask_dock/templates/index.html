@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 align="center">Works log</h1>
+{% for item in jobs%}
+<div class="col-md6 border rounded">
+    <h3>Action #{{item.id}}</h3>
+    <table class="my_table">
+        <tr class="my_row">
+            <td class="title" bgcolor="grey" width="450px">Title of activity</td>
+            <td class="title" bgcolor="grey" width="100px">Team Leader</td>
+            <td class="title" bgcolor="grey" width="100px" align="center">Duration</td>
+            <td class="title" bgcolor="grey" width="170px" align="center">List of collaborators</td>
+            <td class="title" bgcolor="grey" width="100px" align="center">Is finished</td>
+        </tr>
+        <tr>
+            <td class="ordinari" bgcolor="green">{{item.job}}</td>
+            <td class="ordinari" bgcolor="green">{{user[item.team_leader].surname}} {{user[item.team_leader].name}}</td>
+            <td class="ordinari" bgcolor="green" align="center">{{item.work_size}} hours</td>
+            <td class="ordinari" bgcolor="green" align="center">{{item.collaborators}}</td>
+            <td class="ordinari" bgcolor="green" align="center">{% if item.is_finished %}is finished{%else%}is not finished{%endif%}</td>
+        </tr>
+    </table>
+</div>
+{% endfor %}
+{% endblock %}
